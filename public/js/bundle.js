@@ -2,17 +2,22 @@
 var css = ".hljs {\n  display: block;\n  overflow-x: auto;\n  padding: 0.5em;\n  background: #F0F0F0;\n}\n.hljs,\n.hljs-subst {\n  color: #444;\n}\n.hljs-comment {\n  color: #888888;\n}\n.hljs-keyword,\n.hljs-attribute,\n.hljs-selector-tag,\n.hljs-meta-keyword,\n.hljs-doctag,\n.hljs-name {\n  font-weight: bold;\n}\n.hljs-type,\n.hljs-string,\n.hljs-number,\n.hljs-selector-id,\n.hljs-selector-class,\n.hljs-quote,\n.hljs-template-tag,\n.hljs-deletion {\n  color: #880000;\n}\n.hljs-title,\n.hljs-section {\n  color: #880000;\n  font-weight: bold;\n}\n.hljs-regexp,\n.hljs-symbol,\n.hljs-variable,\n.hljs-template-variable,\n.hljs-link,\n.hljs-selector-attr,\n.hljs-selector-pseudo {\n  color: #BC6060;\n}\n.hljs-literal {\n  color: #78A960;\n}\n.hljs-built_in,\n.hljs-bullet,\n.hljs-code,\n.hljs-addition {\n  color: #397300;\n}\n.hljs-meta {\n  color: #1f7199;\n}\n.hljs-meta-string {\n  color: #4d99bf;\n}\n.hljs-emphasis {\n  font-style: italic;\n}\n.hljs-strong {\n  font-weight: bold;\n}\n/* Support for non-HTML5 browsers */\nsection,\narticle,\naside,\nfooter,\nheader,\nnav,\nhgroup {\n  display: block;\n}\nbody {\n  margin: 0;\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAAAAAA7suyFAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAADxSURBVDjLfZTZDsUgCAX5/8+tVgG9C1FrBRdemjaTM6JUIF2c3G0+EZj35Bj9mckuUo7+wHC6AhNaSDHJRZaHhcCIShkIjGgFgRU9mQMEk2hOgr51gUlBnw41Jl1RI1Idgkc0Ia8OKhJoVS0JStOLlKE72IhGHWxFbxLsRS0JI1x4QgT6/iD4I4OcE+QjJIiLsubgjwiW3uMuCfnjY93nLZTqMNSzCG4ron6mizUJ4utItdmQJJ5T2tQ9c2iTUKYOSTMGekUjQ+NmDiLFjN2JaPgD1D/YkpTIMA2yiLk3ysK1iOa7RZKSTpnvqBzCbRD6AwJvppRyVdRaAAAAAElFTkSuQmCC);\n}\nheader {\n  background-color: #2C2C2C;\n  padding: 20px 0 20px 70px;\n  border-top: 3px solid red;\n}\nh1 {\n  color: #707070;\n  font-size: 1.5em;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n}\nh2 {\n  display: inline;\n}\n.rounded-corners {\n  -webkit-border-radius: 10px 10px 10px 10px;\n  border-radius: 10px 10px 10px 10px;\n  border: 1px solid #DBDBE3;\n  padding: 10px;\n}\nsection {\n  display: flex;\n  flex-direction: column;\n  padding: 70px;\n}\ninput {\n  margin-bottom: 10px;\n  background-color: #F0F0F0;\n  font-size: 0.85em;\n}\npre {\n  background-color: #F0F0F0;\n  min-height: 210px;\n}\n#output {\n  width: 100%;\n  margin-bottom: 10px;\n}\n#title-and-select {\n  display: flex;\n  flex-direction: row;\n  align-items: baseline;\n  justify-content: space-between;\n}\nbutton,\n#format-selector {\n  background-color: #337ab7;\n  border-color: #2e6da4;\n  font-size: 0.9em;\n  color: white;\n  width: 5em;\n}\nbutton {\n  align-self: flex-end;\n  width: 7em;\n}\n@media (max-width: 600px) {\n  header {\n    padding: 0 0 1px 20px;\n  }\n\n  section {\n    padding: 20px;\n  }\n}\n"; (require("browserify-css").createStyle(css, { "href": "client/css/style.css"})); module.exports = css;
 },{"browserify-css":5}],2:[function(require,module,exports){
 (function (process){
+"use strict";
+
 var httpRequest;
 
-var hljs = require('./modules/highlight.min.js');
-var formatForHTMLOutput = require('./modules/formatForHTMLOutput.js');
+const
+  hljs                = require('./modules/highlight.min.js'),
+  formatForHTMLOutput = require('./modules/formatForHTMLOutput.js'),
+  env                 = process.env.NODE_ENV || 'development';
 
 require('../css/style.css');
 
 
 document.getElementById("fetchButton").onclick = function() {
-  var url    =  document.getElementById('query-url').value.replace(/\s/g, '');
-  var format =  document.getElementById('format-selector').value;
+  const
+    url    = document.getElementById('query-url').value.replace(/\s/g, ''),
+    format = document.getElementById('format-selector').value;
   makeRequest(url+"/"+format);
 };
 
@@ -28,17 +33,16 @@ function makeRequest(url) {
   httpRequest.send();
 }
 
-const env = process.env.NODE_ENV || 'development';
 
 function writeHighlightedOutput() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {
 
       // Make sure the output is formatted so it can be displayed properly.
-      var apiResponse = formatForHTMLOutput(httpRequest.responseText);
+      const apiResponse = formatForHTMLOutput(httpRequest.responseText);
 
       // Update the #output div with the response from the API
-      var el = document.querySelector('#output');
+      const el = document.querySelector('#output');
       el.innerHTML = apiResponse;
 
       // Tell HighlihtJS to add syntax higlighting

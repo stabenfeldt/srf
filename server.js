@@ -1,7 +1,10 @@
-var express = require('express');
-var app     = express();
-var path    = require('path');
-var env     = process.env.NODE_ENV || 'development';
+"use strict"
+
+const
+  express = require('express'),
+  app     = express(),
+  path    = require('path'),
+  env     = process.env.NODE_ENV || 'development';
 
 
 const forceSsl = function(req, res, next) {
@@ -23,7 +26,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/advertisers/:format?', function(req, res) {
-  var format = req.params.format.toLowerCase();
+  const format = req.params.format.toLowerCase();
   res.sendFile(path.join(__dirname + '/response.'+format));
 });
 
