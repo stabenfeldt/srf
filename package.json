@@ -1,0 +1,27 @@
+{
+	"name": "srf",
+	"version": "1.0.0",
+	"description": "Martin's REST Framework",
+	"main": "server.js",
+	"scripts": {
+		"browserify": "browserify -t browserify-css ./client/js/app.js -o ./public/js/bundle.js",
+		"lint": "eslint *.js **/*.js",
+		"postinstall": "npm run browserify",
+		"start": "npm run browserify && node --harmony server.js",
+		"test": "mocha test -u bdd -R spec",
+		"test:integration": "node_modules/nightwatch/bin/nightwatch",
+		"pretest": "npm run browserify"
+	},
+	"author": "Martin Stabenfeldt",
+	"license": "ISC",
+	"dependencies": {
+		"browserify": "13.0.1",
+		"browserify-css": "0.9.1",
+		"express": "4.14.0"
+	},
+	"devDependencies": {
+		"mocha": "2.5.3",
+		"nightwatch": "0.9.5",
+		"should": "9.0.2"
+	}
+}

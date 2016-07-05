@@ -1,0 +1,88 @@
+@import url("./highlight.min.css");
+
+/* Support for non-HTML5 browsers */
+section, article, aside, footer, header, nav, hgroup {
+  display:block;
+}
+
+body {
+  margin: 0;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAAAAAA7suyFAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAADxSURBVDjLfZTZDsUgCAX5/8+tVgG9C1FrBRdemjaTM6JUIF2c3G0+EZj35Bj9mckuUo7+wHC6AhNaSDHJRZaHhcCIShkIjGgFgRU9mQMEk2hOgr51gUlBnw41Jl1RI1Idgkc0Ia8OKhJoVS0JStOLlKE72IhGHWxFbxLsRS0JI1x4QgT6/iD4I4OcE+QjJIiLsubgjwiW3uMuCfnjY93nLZTqMNSzCG4ron6mizUJ4utItdmQJJ5T2tQ9c2iTUKYOSTMGekUjQ+NmDiLFjN2JaPgD1D/YkpTIMA2yiLk3ysK1iOa7RZKSTpnvqBzCbRD6AwJvppRyVdRaAAAAAElFTkSuQmCC)
+}
+
+
+header {
+  background-color: #2C2C2C;
+  padding: 20px 0 20px 70px;
+  border-top: 3px solid red;
+}
+
+h1 {
+  color: #707070;
+  font-size: 1.5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  display: inline;
+}
+
+.rounded-corners {
+  -webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	border: 1px solid #DBDBE3;
+  padding: 10px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  padding: 70px;
+}
+
+input {
+  margin-bottom: 10px;
+  background-color: #F0F0F0;
+  font-size: 0.85em;
+}
+
+pre {
+  background-color: #F0F0F0;
+  min-height: 210px;
+}
+
+#output {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#title-and-select {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+button,
+#format-selector {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  font-size: 0.9em;
+  color: white;
+  width: 5em;
+}
+
+button {
+  align-self: flex-end;
+  width: 7em;
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 0 0 1px 20px
+  }
+  section {
+    padding: 20px;
+  }
+}
+

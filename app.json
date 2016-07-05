@@ -1,0 +1,7 @@
+{
+  "name": "Martin's REST framework",
+  "description": "Proviedes a simple, yet elgant way of querying APIs",
+  "repository": "https://github.com/stabenfeldt/srf",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}
