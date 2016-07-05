@@ -5,8 +5,8 @@ It's hosted at a free Heroku account. It might need some time to start if no one
 # TODO
 
 * The XML returned has `<<Content-Type: application/json >>` headers. Should be xml.(update respons file)
-* Compress the JS
-  https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fsrf.herokuapp.com%2F
+* Compress the JS. See details at
+  [Google Pagespeed](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fsrf.herokuapp.com%2F)
 * Write as ES6
 * Include HTTP headers in response (update respons file)
 * Setup different environments for the test, production and development.
