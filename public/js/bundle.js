@@ -14,14 +14,14 @@ const
 require('../css/style.css');
 
 
-document.getElementById("fetchButton").onclick = function() {
+document.getElementById("fetchButton").onclick =() => {
   const
     url    = document.getElementById('query-url').value.replace(/\s/g, ''),
     format = document.getElementById('format-selector').value;
   makeRequest(url+"/"+format);
 };
 
-function makeRequest(url) {
+const makeRequest = (url) => {
   httpRequest = new XMLHttpRequest();
 
   if (!httpRequest) {
@@ -34,7 +34,7 @@ function makeRequest(url) {
 }
 
 
-function writeHighlightedOutput() {
+const writeHighlightedOutput = () => {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {
 
@@ -42,7 +42,7 @@ function writeHighlightedOutput() {
       const apiResponse = formatForHTMLOutput(httpRequest.responseText);
 
       // Update the #output div with the response from the API
-      const el = document.querySelector('#output');
+      const el = document.getElementById('output');
       el.innerHTML = apiResponse;
 
       // Tell HighlihtJS to add syntax higlighting
