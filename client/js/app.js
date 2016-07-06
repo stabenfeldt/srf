@@ -10,14 +10,14 @@ const
 require('../css/style.css');
 
 
-document.getElementById("fetchButton").onclick = function() {
+document.getElementById("fetchButton").onclick = () => {
   const
     url    = document.getElementById('query-url').value.replace(/\s/g, ''),
     format = document.getElementById('format-selector').value;
   makeRequest(url+"/"+format);
 };
 
-function makeRequest(url) {
+const makeRequest = (url) => {
   httpRequest = new XMLHttpRequest();
 
   if (!httpRequest) {
@@ -30,7 +30,7 @@ function makeRequest(url) {
 }
 
 
-function writeHighlightedOutput() {
+const writeHighlightedOutput = () => {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {
 
