@@ -38,7 +38,7 @@ const writeHighlightedOutput = () => {
       const apiResponse = formatForHTMLOutput(httpRequest.responseText);
 
       // Update the #output div with the response from the API
-      const el = document.querySelector('#output');
+      const el = document.getElementById('output');
       el.innerHTML = apiResponse;
 
       // Tell HighlihtJS to add syntax higlighting
