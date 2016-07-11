@@ -11,7 +11,7 @@ It's hosted at a free Heroku account. It might need some time to start if no one
 * Include HTTP headers in response (update respons file)
 * Setup different environments for the test, production and development.
   They should run on differnet ports and use different databases.
-* Test on more devices. Only tested on 1 real mobile: Sony Xeria. The rest is tested using the Chrome Devtool.
+* Test on more devices. Only tested on 1 real mobile: Sony Xperia. The rest is tested using the Chrome Devtool.
 * Provide support for more than GET requests.
 * Setup Cirleci for deployment.
 
