@@ -15,7 +15,7 @@
 	"author": "Martin Stabenfeldt",
 	"license": "ISC",
 	"dependencies": {
-		"browserify": "13.0.1",
+		"browserify": "13.3.0",
 		"browserify-css": "0.9.1",
 		"express": "4.14.0"
 	},
